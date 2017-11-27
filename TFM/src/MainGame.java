@@ -5,8 +5,7 @@ import java.util.Enumeration;
 
 public class MainGame {
 	private MainGame() {
-		
-	
+
 		createFrame();
 	}
 
@@ -25,12 +24,13 @@ public class MainGame {
 	// Creates the Window
 	private void createFrame() {
 		DrawingPanel panel = new DrawingPanel();
-		JFrame mainWindow = new JFrame("Terraforming Mars");
+		JFrame mainWindow = new JFrame("TFM");
 		Container content = mainWindow.getContentPane();
 		content.add(panel);
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension dim = tk.getScreenSize();
 
+		mainWindow.setExtendedState(mainWindow.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		mainWindow.setSize(dim);
 		mainWindow.setLocationRelativeTo(null);
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,16 +52,25 @@ public class MainGame {
 			super.paintComponent(g2);
 			Toolkit tk = Toolkit.getDefaultToolkit();
 
-			Hexgrid test = new Hexgrid(10, 10);
+			int xCenter = (int) tk.getScreenSize().getWidth() / 2;
+			int yCenter = (int) tk.getScreenSize().getHeight() / 2;
 
-			
-			
+			System.out.println("xCenter = " + xCenter);
+
+			System.out.println("yCenter = " + yCenter);
+
+			Hexgrid test = new Hexgrid(9, 9);
+			test.relocateGrid(xCenter, yCenter);
+
 			for (int i = 0; i < test.getGridRows(); i++) {
 
 				for (int j = 0; j < test.getGridColumns(); j++) {
-					
-				g2.drawPolygon(test.grid[i][j].hex);
 
+					if (test.grid[i][j].getVisible() == true) {
+
+						g2.setColor(test.grid[i][j].backgroundColor);
+						g2.fill(test.grid[i][j].hex);
+					}
 				}
 			}
 
