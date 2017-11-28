@@ -12,8 +12,8 @@ public class Hexgrid {
 			{ 1, 1, 1, 1, 1, 1, 1, 1, 0 }, { 1, 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 			{ 0, 1, 1, 1, 1, 1, 1, 1, 0 }, { 0, 1, 1, 1, 1, 1, 1, 0, 0 }, { 0, 0, 1, 1, 1, 1, 1, 0, 0 } };
 
-	private int border = 2;
-	private int hexSize = 40;
+	private int border = 4;
+	private int hexSize = 60;
 
 	public Hexgrid() {
 
